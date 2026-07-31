@@ -12,6 +12,147 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
  
+# Styling
+
+st.markdown(
+    """
+    <style>
+    :root {
+        --card-bg: #ffffff;
+        --card-border: #e1ecf3;
+        --text-primary: #12232f;
+        --text-secondary: #56707f;
+        --accent: #0b6e8f;
+        --accent-dark: #094f68;
+        --accent-soft: #e4f3f8;
+        --success-bg: #eafaf1;
+        --success-border: #a9dfbf;
+        --success-text: #1e6b3c;
+        --danger-bg: #fdecea;
+        --danger-border: #f5b7b1;
+        --danger-text: #7a1f13;
+        --shadow: 0 4px 18px rgba(11, 61, 92, 0.08);
+    }
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --card-bg: #1a232b;
+            --card-border: #2c3944;
+            --text-primary: #eaf2f6;
+            --text-secondary: #9fb2bd;
+            --accent: #3fc1e3;
+            --accent-dark: #2ea1c0;
+            --accent-soft: #16323d;
+            --success-bg: #123322;
+            --success-border: #2f6b45;
+            --success-text: #8fe0ac;
+            --danger-bg: #3a1613;
+            --danger-border: #7a352c;
+            --danger-text: #f5a89c;
+            --shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+        }
+    }
+ 
+    /* Hero banner */
+    .hero {
+        background: linear-gradient(120deg, var(--accent) 0%, var(--accent-dark) 100%);
+        padding: 1.8rem 2rem;
+        border-radius: 18px;
+        margin-bottom: 1.6rem;
+        box-shadow: var(--shadow);
+    }
+    .hero-title {
+        font-size: 2.1rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin: 0;
+    }
+    .hero-subtitle {
+        font-size: 1.0rem;
+        color: #eaf6fb;
+        margin-top: 0.4rem;
+        max-width: 720px;
+    }
+ 
+    /* Section cards */
+    .card {
+        background-color: var(--card-bg);
+        color: var(--text-primary);
+        padding: 1.4rem 1.6rem;
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--card-border);
+        margin-bottom: 1rem;
+    }
+    .section-heading {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.2rem;
+    }
+    .section-caption {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 0.9rem;
+    }
+ 
+    /* Result banners */
+    .result-box {
+        padding: 1.2rem 1.5rem;
+        border-radius: 16px;
+        margin-top: 1rem;
+        font-size: 1.05rem;
+        box-shadow: var(--shadow);
+    }
+    .result-positive {
+        background-color: var(--danger-bg);
+        border: 1px solid var(--danger-border);
+        color: var(--danger-text);
+    }
+    .result-negative {
+        background-color: var(--success-bg);
+        border: 1px solid var(--success-border);
+        color: var(--success-text);
+    }
+ 
+    .footer-note {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-top: 2rem;
+        text-align: center;
+    }
+ 
+    /* Buttons */
+    div.stButton > button {
+        background-color: var(--accent);
+        color: #ffffff;
+        border-radius: 10px;
+        padding: 0.65rem 1.6rem;
+        font-weight: 700;
+        border: none;
+        box-shadow: var(--shadow);
+        transition: background-color 0.15s ease-in-out;
+    }
+    div.stButton > button:hover {
+        background-color: var(--accent-dark);
+        color: #ffffff;
+    }
+ 
+    /* Progress bar accent */
+    div[data-testid="stProgress"] > div > div {
+        background-color: var(--accent) !important;
+    }
+ 
+    /* Symptom toggle rows */
+    .symptom-row {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.35rem 0;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 # Load trained model
 MODEL_PATH = "best_rf_model.pkl"
@@ -147,7 +288,7 @@ if submitted:
                 st.markdown(
                     f"""
                     <div class="result-box" style="background-color:#fdecea; border:1px solid #f5b7b1; color:#7a1f13;">
-                    <strong>st⚠️ Elevated Risk Detected</strong><br>
+                    <strong>⚠️ Elevated Risk Detected</strong><br>
                     Estimated likelihood of a positive diabetes risk indication: <strong>{proba_positive*100:.1f}%</strong><br>
                     Please consider consulting a healthcare professional for a proper clinical assessment.
                     </div>
