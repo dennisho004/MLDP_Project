@@ -11,59 +11,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
-
-# styling
-st.markdown(
-    """
-    <style>
-    .stApp {
-        background-color: #f4f8fb;
-    }
-    .main-title {
-        font-size: 2.1rem;
-        font-weight: 700;
-        color: #0b3d5c;
-        margin-bottom: 0.1rem;
-    }
-    .sub-title {
-        font-size: 1.0rem;
-        color: #4a6274;
-        margin-bottom: 1.2rem;
-    }
-    .card {
-        background-color: #ffffff;
-        padding: 1.3rem 1.5rem;
-        border-radius: 14px;
-        box-shadow: 0 2px 10px rgba(11, 61, 92, 0.08);
-        border: 1px solid #e3edf3;
-    }
-    .result-box {
-        padding: 1.2rem 1.5rem;
-        border-radius: 14px;
-        margin-top: 1rem;
-        font-size: 1.05rem;
-    }
-    .footer-note {
-        font-size: 0.8rem;
-        color: #7a8b96;
-        margin-top: 2rem;
-    }
-    div.stButton > button {
-        background-color: #0b6e8f;
-        color: white;
-        border-radius: 8px;
-        padding: 0.6rem 1.4rem;
-        font-weight: 600;
-        border: none;
-    }
-    div.stButton > button:hover {
-        background-color: #094f68;
-        color: white;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
  
 
 # Load trained model
@@ -93,11 +40,6 @@ except Exception as e:
 # Header
 
 st.markdown('<div class="main-title">🩺 Early-Stage Diabetes Risk Screener</div>', unsafe_allow_html=True)
-st.markdown(
-    '<div class="sub-title">A quick, low-cost preliminary screening tool based on reported symptoms '
-    'and demographic details. This tool supports — but does not replace — a proper medical diagnosis.</div>',
-    unsafe_allow_html=True,
-)
  
 with st.sidebar:
     st.header("About this tool")
@@ -108,8 +50,6 @@ with st.sidebar:
     st.markdown("---")
     st.write("**How to use it:**")
     st.write("1. Fill in the demographic details.\n2. Answer each symptom question.\n3. Click **Predict Risk**.")
-    st.markdown("---")
-    st.caption("⚠️ For educational purposes only — not a substitute for professional medical advice.")
  
 st.write("")
  
@@ -207,7 +147,7 @@ if submitted:
                 st.markdown(
                     f"""
                     <div class="result-box" style="background-color:#fdecea; border:1px solid #f5b7b1; color:#7a1f13;">
-                    <strong>⚠️ Elevated Risk Detected</strong><br>
+                    <strong>st⚠️ Elevated Risk Detected</strong><br>
                     Estimated likelihood of a positive diabetes risk indication: <strong>{proba_positive*100:.1f}%</strong><br>
                     Please consider consulting a healthcare professional for a proper clinical assessment.
                     </div>
